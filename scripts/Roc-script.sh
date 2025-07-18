@@ -27,7 +27,7 @@ function git_sparse_clone() {
 function others_setting() {
     local qualcommax_uci_dir="$GITHUB_WORKSPACE/target/linux/qualcommax/base-files/etc/uci-defaults"
     install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
-    install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$BUILD_DIR/package/base-files/files/etc/uci-defaults/991_custom_settings"    
+    install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$OPENWRT_PATH/package/base-files/files/etc/uci-defaults/991_custom_settings"    
 }
 
 # OpenList & AdGuardHome & WolPlus & Lucky & OpenAppFilter & 集客无线AC控制器 & 雅典娜LED控制
