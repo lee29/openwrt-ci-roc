@@ -8,9 +8,13 @@
 - **本固件禁止用于任何商业用途，请务必严格遵守国家互联网使用相关法律规定！**
 
 ## 项目说明
-- 固件默认管理地址：**`192.168.2.1`** 默认用户：**`root`** 默认密码：**`none`**
+- 固件默认管理地址：**`192.168.1.1`** 默认用户：**`root`** 默认密码：**`none`**
 - 源码来源：[breeze303](https://github.com/LiBwrt-op/openwrt-6.x) [VIKINGYFY](https://github.com/VIKINGYFY/immortalwrt)
 - 云编译来源：[haiibo](https://github.com/haiibo/OpenWrt) [视频教程](https://www.youtube.com/watch?v=6j4ofS0GT38&t=507s)
+
+#5GHz WIFI不正常，电脑显示连接速度1200mbps，实际拷贝吞吐只有200多。经人提醒手动指定发射功率到20db之后，可以到700mbps的吞吐。驱动默认不填的时候是27db，反而有问题
+https://post.smzdm.com/p/a7p2ddel/
+如果WiFi想跑满千兆的话，发射功率设置23db，信道选149或者157
 
 ## 定制固件
 1. 首先要登录 Gihub 账号，然后 Fork 此项目到你自己的 Github 仓库
