@@ -24,6 +24,12 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
+function others_setting() {
+    local qualcommax_uci_dir="$GITHUB_WORKSPACE/target/linux/qualcommax/base-files/etc/uci-defaults"
+    install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
+    install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$BUILD_DIR/package/base-files/files/etc/uci-defaults/991_custom_settings"    
+}
+
 # OpenList & AdGuardHome & WolPlus & Lucky & OpenAppFilter & 集客无线AC控制器 & 雅典娜LED控制
 git clone --depth=1 https://github.com/sbwml/luci-app-openlist package/openlist
 git_sparse_clone master https://github.com/kenzok8/openwrt-packages adguardhome luci-app-adguardhome
