@@ -33,6 +33,8 @@ function others_setting() {
 
 #svn export https://github.com/kiddin9/kwrt-packages/trunk/luci-app-xunlei package/luci-app-xunlei
 git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-xunlei "luci-app-xunlei"
+git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-lib-taskd "luci-lib-taskd"
+
 # OpenList & AdGuardHome & WolPlus & Lucky & OpenAppFilter & 集客无线AC控制器 & 雅典娜LED控制
 git clone --depth=1 https://github.com/sbwml/luci-app-openlist package/openlist
 git_sparse_clone master https://github.com/kenzok8/openwrt-packages adguardhome luci-app-adguardhome
