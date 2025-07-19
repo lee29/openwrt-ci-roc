@@ -75,4 +75,4 @@ chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-$BASE_PATH/diy.sh
+
