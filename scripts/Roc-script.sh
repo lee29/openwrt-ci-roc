@@ -11,23 +11,23 @@ sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Built by lee29')/g" feeds/luci/mo
 
 
 
-WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
-WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
-if [ -f "$WIFI_SH" ]; then
-	#修改WIFI名称
-	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
-	#修改WIFI密码
-	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
-elif [ -f "$WIFI_UC" ]; then
-	#修改WIFI名称
-	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
-	#修改WIFI密码
-	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
-	#修改WIFI地区
-	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
-	#修改WIFI加密
-	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
-fi
+# WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
+# WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
+# if [ -f "$WIFI_SH" ]; then
+# 	#修改WIFI名称
+# 	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
+# 	#修改WIFI密码
+# 	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
+# elif [ -f "$WIFI_UC" ]; then
+# 	#修改WIFI名称
+# 	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
+# 	#修改WIFI密码
+# 	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
+# 	#修改WIFI地区
+# 	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
+# 	#修改WIFI加密
+# 	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
+# fi
 
 
 
