@@ -24,11 +24,13 @@ COMMIT_HASH=$4
 add_wifi_default_set() {
     local qualcommax_uci_dir="$BUILD_DIR/target/linux/qualcommax/base-files/etc/uci-defaults"
     if [ -d "$qualcommax_uci_dir" ]; then
-        install -Dm755 "$BASE_PATH/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
-        install -Dm755 "$BASE_PATH/patches/991_custom_settings" "$BUILD_DIR/package/base-files/files/etc/uci-defaults/991_custom_settings"    
+        install -Dm755 "$BASE_PATH/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"  
     fi
 }
 
+custom_settings() {
+    install -Dm755 "$BASE_PATH/patches/991_custom_settings" "$BUILD_DIR/package/base-files/files/etc/uci-defaults/991_custom_settings" 
+}
 #function others_setting() {
 #    local qualcommax_uci_dir="$GITHUB_WORKSPACE/target/linux/qualcommax/base-files/etc/uci-defaults"
 #    install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
@@ -40,6 +42,7 @@ add_wifi_default_set() {
 
 main() {
     add_wifi_default_set
+    custom_settings
 }
 
 main "$@"
