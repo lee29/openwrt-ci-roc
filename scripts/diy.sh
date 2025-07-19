@@ -50,6 +50,28 @@ fix_compile_vlmcsd() {
 #    install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$OPENWRT_PATH/package/base-files/files/etc/uci-defaults/991_custom_settings"    
 #}
 
+
+fix_build_for_openssl() {
+    local openssl_dir="$OPENWRT_PATH/package/libs/openssl"
+    local makefile="$openssl_dir/Makefile"
+    if [ -d "$(dirname "$makefile")" ] && [ -f "$makefile" ]; then
+        if grep -q "3.0.16" "$makefile"; then
+            # 替换本地openssl版本
+            rm -rf "$openssl_dir"
+            cp -rf "$GITHUB_WORKSPACE/patches/openssl" "$openssl_dir"
+        fi
+    fi
+}
+
+fix_mk_def_depends() {
+    sed -i 's/libustream-mbedtls/libustream-openssl/g' $OPENWRT_PATH/include/target.mk 2>/dev/null
+    if [ -f $OPENWRT_PATH/target/linux/qualcommax/Makefile ]; then
+        sed -i 's/wpad-openssl/wpad-mesh-openssl/g' $OPENWRT_PATH/target/linux/qualcommax/Makefile
+    fi
+}
+
+
+
 install_opkg_distfeeds() {
     local emortal_def_dir="$OPENWRT_PATH/package/emortal/default-settings"
     local distfeeds_conf="$emortal_def_dir/files/99-distfeeds.conf"
@@ -79,6 +101,8 @@ main() {
     add_wifi_default_set
     custom_settings
     fix_compile_vlmcsd
+    fix_build_for_openssl
+    fix_mk_def_depends
     install_opkg_distfeeds
 }
 
