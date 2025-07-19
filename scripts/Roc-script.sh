@@ -1,14 +1,39 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
-
-source /etc/profile
-BASE_PATH=$(cd $(dirname $0) && pwd)
-
-# 修改默认IP & 固件名称 & 编译署名
+#修改默认主题
+sed -i "s/luci-theme-bootstrap/luci-theme-argon/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+# 修改默认IP & 固件名称 & 编译署名 &#添加编译日期标识
 #sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/hostname='.*'/hostname='JDC'/g" package/base-files/files/bin/config_generate
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Built by lee29')/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+
+
+
+
+
+WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
+WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
+if [ -f "$WIFI_SH" ]; then
+	#修改WIFI名称
+	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
+	#修改WIFI密码
+	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
+elif [ -f "$WIFI_UC" ]; then
+	#修改WIFI名称
+	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
+	#修改WIFI密码
+	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
+	#修改WIFI地区
+	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
+	#修改WIFI加密
+	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
+fi
+
+
+
+
+
+
 
 # 修正使用ccache编译vlmcsd的问题
 mkdir -p feeds/packages/net/vlmcsd/patches
