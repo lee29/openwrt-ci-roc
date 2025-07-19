@@ -35,7 +35,7 @@ custom_settings() {
 
 fix_compile_vlmcsd() {
     local dir="$OPENWRT_PATH/feeds/packages/net/vlmcsd"
-    local patch_src="$GITHUB_WORKSPACE/patches/fix_vlmcsd_with_ccache.patch"
+    local patch_src="$GITHUB_WORKSPACE/patches/fix_vlmcsd_compile_with_ccache.patch"
     local patch_dest="$dir/patches"
 
     if [ -d "$dir" ]; then
