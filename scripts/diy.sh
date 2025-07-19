@@ -31,6 +31,19 @@ add_wifi_default_set() {
 custom_settings() {
     install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$OPENWRT_PATH/package/base-files/files/etc/uci-defaults/991_custom_settings" 
 }
+
+
+fix_compile_vlmcsd() {
+    local dir="$OPENWRT_PATH/feeds/packages/net/vlmcsd"
+    local patch_src="$GITHUB_WORKSPACE/patches/001-fix_compile_with_ccache.patch"
+    local patch_dest="$dir/patches"
+
+    if [ -d "$dir" ]; then
+        mkdir -p "$patch_dest"
+        cp -f "$patch_src" "$patch_dest"
+    fi
+}
+
 #function others_setting() {
 #    local qualcommax_uci_dir="$GITHUB_WORKSPACE/target/linux/qualcommax/base-files/etc/uci-defaults"
 #    install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
@@ -43,6 +56,7 @@ custom_settings() {
 main() {
     add_wifi_default_set
     custom_settings
+    fix_compile_vlmcsd
 }
 
 main "$@"
