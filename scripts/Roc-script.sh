@@ -24,12 +24,6 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-function others_setting() {
-    local qualcommax_uci_dir="$GITHUB_WORKSPACE/target/linux/qualcommax/base-files/etc/uci-defaults"
-    install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
-    install -Dm755 "$GITHUB_WORKSPACE/patches/991_custom_settings" "$OPENWRT_PATH/package/base-files/files/etc/uci-defaults/991_custom_settings"    
-}
-
 
 #svn export https://github.com/kiddin9/kwrt-packages/trunk/luci-app-xunlei package/luci-app-xunlei
 #git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-xunlei "luci-app-xunlei"
