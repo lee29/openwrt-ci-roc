@@ -12,6 +12,7 @@ env:
   CONFIG_FILE: configs/IPQ60XX.config
   GENERAL_CONFIG_FILE: configs/General.config
   DIY_SCRIPT: scripts/Roc-script.sh
+  DIY_SCRIPT2: scripts/diy.sh
   CLASH_KERNEL: amd64
   MADS: false
   UPLOAD_BIN_DIR: false
@@ -121,6 +122,7 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/$DIY_SCRIPT2
 
     - name: Download DL Package(下载DL软件包)
       run: |
