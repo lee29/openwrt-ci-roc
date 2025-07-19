@@ -1,3 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+source /etc/profile
+BASE_PATH=$(cd $(dirname $0) && pwd)
+
 # 修改默认IP & 固件名称 & 编译署名
 #sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 sed -i "s/hostname='.*'/hostname='JDC'/g" package/base-files/files/bin/config_generate
@@ -42,3 +49,5 @@ chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+$BASE_PATH/update.sh
