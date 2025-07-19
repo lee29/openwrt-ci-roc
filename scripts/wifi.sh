@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -e
+set -o errexit
+set -o errtrace
+
+# 定义错误处理函数
+error_handler() {
+    echo "Error occurred in script at line: ${BASH_LINENO[0]}, command: '${BASH_COMMAND}'"
+}
+
+# 设置trap捕获ERR信号
+trap 'error_handler' ERR
+
+source /etc/profile
+BASE_PATH=$(cd $(dirname $0) && pwd)
+
+REPO_URL=$1
+REPO_BRANCH=$2
+BUILD_DIR=$3
+COMMIT_HASH=$4
+
+
+add_wifi_default_set() {
+    local qualcommax_uci_dir="$BUILD_DIR/target/linux/qualcommax/base-files/etc/uci-defaults"
+    if [ -d "$qualcommax_uci_dir" ]; then
+        install -Dm755 "$BASE_PATH/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"
+    fi
+}
+
+
+
+
+main() {
+    add_wifi_default_set
+}
+
+main "$@"
