@@ -3,12 +3,11 @@ name: IPQ60XX-LibWrt
 on:
   workflow_dispatch:
     inputs:
-      debug_enabled:
-        type: boolean
-        description: 'cd openwrt && make menuconfig'
+      SSH_ACTION:
+        description: 'SSH远程配置固件cd openwrt && make menuconfig'
         required: false
-        default: false
-  
+        default: 'false'
+        type: boolean  
   workflow_call:
   # schedule:
   #   - cron: 0 20 * * *
@@ -132,10 +131,10 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT2
-
+        
     - name: SSH远程连接服务器
       uses: mxschmitt/action-tmate@v3
-      if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      if: env.SSH_ACTIONS == 'true' || (github.event.inputs.SSH_ACTION == 'true')
       timeout-minutes: 15
 
     - name: 输出编译信息
