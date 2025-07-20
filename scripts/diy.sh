@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
+# #!/usr/bin/env bash
 
-set -e
-set -o errexit
-set -o errtrace
+# set -e
+# set -o errexit
+# set -o errtrace
 
 # # 定义错误处理函数
 # error_handler() {
