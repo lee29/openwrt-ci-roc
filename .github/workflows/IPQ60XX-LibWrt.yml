@@ -135,7 +135,7 @@ jobs:
     - name: SSH远程连接服务器
       uses: mxschmitt/action-tmate@v3
       if: env.SSH_ACTIONS == 'true' || (github.event.inputs.SSH_ACTION == 'true')
-      timeout-minutes: 15
+      # timeout-minutes: 15
 
     - name: 输出编译信息
       run: |
