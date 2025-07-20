@@ -125,8 +125,8 @@ jobs:
     - name: Load Custom Configuration(加载自定义配置)
       run: |
         cat $CONFIG_FILE $GENERAL_CONFIG_FILE > $OPENWRT_PATH/.config
-        chmod +x $DIY_SCRIPT
-        chmod +x $DIY_SCRIPT2
+        chmod +x $GITHUB_WORKSPACE/$DIY_SCRIPT
+        chmod +x $GITHUB_WORKSPACE/$DIY_SCRIPT2
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
         cd $OPENWRT_PATH
