@@ -17,8 +17,8 @@ env:
   REPO_BRANCH: k6.12-nss
   CONFIG_FILE: configs/IPQ60XX.config
   GENERAL_CONFIG_FILE: configs/General.config
-  DIY_SCRIPT: scripts/Roc-script.sh
-  DIY_SCRIPT2: scripts/diy.sh
+  DIY_SCRIPT: scripts/diy.sh
+  DIY_SCRIPT2: scripts/Roc-script.sh
   CLASH_KERNEL: amd64
   MADS: false
   UPLOAD_BIN_DIR: false
