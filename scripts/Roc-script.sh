@@ -66,7 +66,7 @@ function git_sparse_clone() {
 
 
 
-#git clone --depth=1 https://github.com/lee29/xunlei-package package/xunlei
+git clone --depth=1 https://github.com/lee29/xunlei-package package/xunlei
 #svn export https://github.com/kiddin9/kwrt-packages/trunk/luci-app-xunlei package/luci-app-xunlei
 #git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-app-xunlei "luci-app-xunlei"
 #git_sparse_clone main https://github.com/kiddin9/kwrt-packages luci-lib-taskd "luci-lib-taskd"
