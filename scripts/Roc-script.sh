@@ -11,26 +11,6 @@ sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ Built by lee29')/g" feeds/luci/mo
 
 
 
-# WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh")
-# WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
-# if [ -f "$WIFI_SH" ]; then
-# 	#修改WIFI名称
-# 	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
-# 	#修改WIFI密码
-# 	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
-# elif [ -f "$WIFI_UC" ]; then
-# 	#修改WIFI名称
-# 	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
-# 	#修改WIFI密码
-# 	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
-# 	#修改WIFI地区
-# 	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
-# 	#修改WIFI加密
-# 	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
-# fi
-
-
-
 
 # 调整NSS驱动q6_region内存区域预留大小（ipq6018.dtsi默认预留85MB，ipq6018-512m.dtsi默认预留55MB，以下分别是改成预留16MB、32MB、64MB和96MB）
 # sed -i 's/reg = <0x0 0x4ab00000 0x0 0x[0-9a-f]\+>/reg = <0x0 0x4ab00000 0x0 0x01000000>/' target/linux/qualcommax/files/arch/arm64/boot/dts/qcom/ipq6018-512m.dtsi
