@@ -20,25 +20,25 @@ trap 'error_handler' ERR
 # BUILD_DIR=$3
 # COMMIT_HASH=$4
 
-WRT_SSID=DD
-WRT_WORD=DDDDDDDD
-WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh" 2>/dev/null)
-WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
-if [ -f "$WIFI_SH" ]; then
-	#修改WIFI名称
-	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
-	#修改WIFI密码
-	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
-elif [ -f "$WIFI_UC" ]; then
-	#修改WIFI名称
-	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
-	#修改WIFI密码
-	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
-	#修改WIFI地区
-	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
-	#修改WIFI加密
-	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
-fi
+# WRT_SSID=DD
+# WRT_WORD=DDDDDDDD
+# WIFI_SH=$(find ./target/linux/{mediatek/filogic,qualcommax}/base-files/etc/uci-defaults/ -type f -name "*set-wireless.sh" 2>/dev/null)
+# WIFI_UC="./package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc"
+# if [ -f "$WIFI_SH" ]; then
+# 	#修改WIFI名称
+# 	sed -i "s/BASE_SSID='.*'/BASE_SSID='$WRT_SSID'/g" $WIFI_SH
+# 	#修改WIFI密码
+# 	sed -i "s/BASE_WORD='.*'/BASE_WORD='$WRT_WORD'/g" $WIFI_SH
+# elif [ -f "$WIFI_UC" ]; then
+# 	#修改WIFI名称
+# 	sed -i "s/ssid='.*'/ssid='$WRT_SSID'/g" $WIFI_UC
+# 	#修改WIFI密码
+# 	sed -i "s/key='.*'/key='$WRT_WORD'/g" $WIFI_UC
+# 	#修改WIFI地区
+# 	sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
+# 	#修改WIFI加密
+# 	sed -i "s/encryption='.*'/encryption='psk2+ccmp'/g" $WIFI_UC
+# fi
 
 
 
@@ -51,7 +51,7 @@ fi
 add_wifi_default_set() {
     local qualcommax_uci_dir="$OPENWRT_PATH/target/linux/qualcommax/base-files/etc/uci-defaults"
     if [ -d "$qualcommax_uci_dir" ]; then
-        install -Dm755 "$GITHUB_WORKSPACE/patches/992_set-wifi-uci.sh" "$qualcommax_uci_dir/992_set-wifi-uci.sh"  
+        install -Dm755 "$GITHUB_WORKSPACE/patches/990_set-wifi-uci.sh" "$qualcommax_uci_dir/990_set-wifi-uci.sh"  
     fi
 }
 
