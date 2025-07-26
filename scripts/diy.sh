@@ -1,17 +1,16 @@
-#!/bin/bash
-# #!/usr/bin/env bash
+#!/usr/bin/env bash
 
-# set -e
-# set -o errexit
-# set -o errtrace
+set -e
+set -o errexit
+set -o errtrace
 
-# # 定义错误处理函数
-# error_handler() {
-#     echo "Error occurred in script at line: ${BASH_LINENO[0]}, command: '${BASH_COMMAND}'"
-# }
+# 定义错误处理函数
+error_handler() {
+    echo "Error occurred in script at line: ${BASH_LINENO[0]}, command: '${BASH_COMMAND}'"
+}
 
-# # 设置trap捕获ERR信号
-# trap 'error_handler' ERR
+# 设置trap捕获ERR信号
+trap 'error_handler' ERR
 
 # source /etc/profile
 # BASE_PATH=$(cd $(dirname $0) && pwd)
