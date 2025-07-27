@@ -18,7 +18,7 @@ env:
   CONFIG_FILE: configs/IPQ60XX.config
   GENERAL_CONFIG_FILE: configs/General.config
   DIY_SCRIPT: scripts/diy.sh
-  DIY_SCRIPT2: scripts/Roc-script.sh  #  FILES: files
+  DIY_SCRIPT2: scripts/Roc-script.sh
   CLASH_KERNEL: amd64
   MADS: false
   UPLOAD_BIN_DIR: false
