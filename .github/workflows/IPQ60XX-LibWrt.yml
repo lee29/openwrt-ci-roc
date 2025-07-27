@@ -19,6 +19,7 @@ env:
   GENERAL_CONFIG_FILE: configs/General.config
   DIY_SCRIPT: scripts/diy.sh
   DIY_SCRIPT2: scripts/Roc-script.sh
+#  FILES: files
   CLASH_KERNEL: amd64
   MADS: false
   UPLOAD_BIN_DIR: false
@@ -135,10 +136,9 @@ jobs:
         $GITHUB_WORKSPACE/scripts/diy.sh
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT2
-        mkdir -p $OPENWRT_PATH/files
-#        cp -f $FILES $OPENWRT_PATH/files
-#        [ -e $FILES ] && mv $FILES $OPENWRT_PATH/files
-        [ -e files ] && mv files $OPENWRT_PATH/files
+#       mkdir -p $OPENWRT_PATH/files
+#       cp -f $FILES $OPENWRT_PATH/files
+        [ -e $FILES ] && mv -f $FILES $OPENWRT_PATH/files
 
         
     - name: SSH远程连接服务器
@@ -211,8 +211,8 @@ jobs:
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: **192.168.1.1**
           - 🔑 默认密码: none
-          - 🚀 WiFi名称: **LibWrt**
-          - 🔑 WiFi密码: 12345678
+          - 🚀 WiFi名称: DelL
+          - 🔑 WiFi密码: DelL8090
           ### 🧊 固件版本
           - 固件内核版本：**${{ env.VERSION_KERNEL }}**
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
